@@ -1,3 +1,8 @@
 .settings
 target/classes
 target/test-classes
+target/classes
+target/cobertura
+target/generated-classes
+target/surefire-reports
+target/test-classes
