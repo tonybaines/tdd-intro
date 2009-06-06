@@ -28,21 +28,14 @@ public class Dealer {
 	public void newGame() {
 		shuffle();
 	}
-	
-	public Card[] deal() {
-		return new Card[] {nextCard(), nextCard()};
-	}
 
 	private void shuffle() {
 		deck = new LinkedList<Card>();
 		deck.addAll(Arrays.asList(Card.values()));
 		Collections.shuffle(deck);
 	}
-	public Card twist() {
-		return nextCard();
-	}
 
-	private Card nextCard() {
+	public Card nextCard() {
 		if (deck.size() ==0) throw new IllegalStateException("No cards left");
 		return deck.remove(0);
 	}

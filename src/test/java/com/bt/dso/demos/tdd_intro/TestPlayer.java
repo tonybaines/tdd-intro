@@ -9,8 +9,8 @@ public class TestPlayer {
 	@Before
 	public void setUp() {
 		dealer = createNiceMock(Dealer.class);
-		expect(dealer.deal()).andReturn(EXPECTED_HAND_SCORE_20);
-		replay(dealer);
+		expect(dealer.nextCard()).andReturn(Card.CJ);
+		expect(dealer.nextCard()).andReturn(Card.C10);
 	}
 	
 	@After
@@ -20,15 +20,36 @@ public class TestPlayer {
 
 	@Test
 	public void shouldHoldTheHandTheyAreDealt() {
+		replay(dealer);
 		Player player = new Player(dealer);
 		player.newGame();
-		assertArrayEquals(EXPECTED_HAND_SCORE_20, player.getHand());
+		assertArrayEquals(EXPECTED_HAND_SCORE_20, player.getHand().toArray());
 	}
 	@Test
 	public void shouldScoreTheirOwnHand() {
+		replay(dealer);
 		Player player = new Player(dealer);
 		player.newGame();
 		assertEquals(20, player.score());
+	}
+	@Test
+	public void shouldBeAbleToCallTwistToGetAnotherCard() {
+		expect(dealer.nextCard()).andReturn(Card.CA);
+		replay(dealer);
+		Player player = new Player(dealer);
+		player.newGame();
+		assertEquals(20, player.score());
+		player.twist();
+		assertEquals(21, player.score());
+	}
+	@Test(expected=BlackjackBustException.class)
+	public void shouldThrowAnExceptionIfTheScoreIsGreaterThan21AfterTwisting() {
+		expect(dealer.nextCard()).andReturn(Card.C2);
+		replay(dealer);
+		Player player = new Player(dealer);
+		player.newGame();
+		assertEquals(20, player.score());
+		player.twist();
 	}
 	
 }

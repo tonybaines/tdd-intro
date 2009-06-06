@@ -1,9 +1,13 @@
 package com.bt.dso.demos.tdd_intro;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
 
+	private static final int MAX_SCORE = 21;
 	private final Dealer dealer;
-	private Card[] hand;
+	private final List<Card> hand = new ArrayList<Card>();
 
 	public Player(Dealer dealer) {
 		this.dealer = dealer;
@@ -11,10 +15,11 @@ public class Player {
 
 	public void newGame() {
 		dealer.newGame();
-		this.hand = dealer.deal();
+		twist();
+		twist();
 	}
 
-	public Card[] getHand() {
+	public List<Card> getHand() {
 		return this.hand;
 	}
 
@@ -24,6 +29,11 @@ public class Player {
 			score += card.score();
 		}
 		return score;
+	}
+
+	public void twist() {
+		this.hand.add(dealer.nextCard());
+		if (this.score() > MAX_SCORE) throw new BlackjackBustException();
 	}
 
 }
