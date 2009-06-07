@@ -1,10 +1,12 @@
-package com.bt.dso.demos.tdd_intro;
+package com.bt.dso.demos.tdd_intro.blackjack;
 
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.Test;
+
+import com.bt.dso.demos.tdd_intro.blackjack.Dealer;
 
 public class TestDealer {
 	@Test

@@ -1,4 +1,4 @@
-package com.bt.dso.demos.tdd_intro;
+package com.bt.dso.demos.tdd_intro.blackjack;
 
 public enum Card {
 	HA(1), SA(1), DA(1), CA(1),

@@ -1,4 +1,4 @@
-package com.bt.dso.demos.tdd_intro;
+package com.bt.dso.demos.tdd_intro.blackjack;
 
 import java.util.ArrayList;
 import java.util.List;

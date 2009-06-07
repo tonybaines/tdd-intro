@@ -1,8 +1,13 @@
-package com.bt.dso.demos.tdd_intro;
+package com.bt.dso.demos.tdd_intro.blackjack;
 import static org.easymock.classextension.EasyMock.*;
 import static org.junit.Assert.*;
 
 import org.junit.*;
+
+import com.bt.dso.demos.tdd_intro.blackjack.BlackjackBustException;
+import com.bt.dso.demos.tdd_intro.blackjack.Card;
+import com.bt.dso.demos.tdd_intro.blackjack.Dealer;
+import com.bt.dso.demos.tdd_intro.blackjack.Player;
 public class TestPlayer {
 	private Dealer dealer;
 	private static final Card[] EXPECTED_HAND_SCORE_20 = new Card[] {Card.CJ, Card.C10};
